@@ -1,0 +1,31 @@
+name: 'Example workflow'
+
+on: push
+
+jobs:
+  example:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Private actions checkout
+      uses: daspn/private-actions-checkout@v2
+      with:
+        actions_list: '["himanshuupadhyay102/jira-keys@master", "githubuser/my-private-action-2@v1"]'
+        checkout_base_path: ./.github/actions
+        #app_id: ${{ secrets.APP_ID }}
+        #app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+    - name: Validation
+      run: |
+        ls -lR ./.github/actions
+
+    # the custom private action will be available on the job's workspace
+    - name: 'Using custom private action 1'
+      uses: ./.github/actions/jira-keys
+      #with:
+      #  some_arg: test
+
+    #- name: 'Using custom private action 2'
+     # uses: ./.github/actions/my-private-action-2

@@ -32,28 +32,19 @@ jobs:
     needs: [Build]
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout GitHub Action Repo
+    - name: Checkout this Repo
+      uses: actions/checkout@v2
+    - name: Checkout private actions repo
       uses: actions/checkout@v2
 
-      #uses: actions/checkout@v2
-
-      #with:
-
-       #  repository: himanshuupadhyay102/jira-keys
-        # token: ${{secrets.GITHUB_TOKEN}} # stored in GitHub secret
-         #ref: master
-         #path: .github/actions/jira-extract-issue-keys
-    #- name: Run My Action
-     # uses: ./.github/actions/jira-extract-issue-keys
-    - name: Parse Jira Keys from Commit
-      uses: himanshuupadhyay102/jira-keys@master
       with:
-        repository: himanshuupadhyay102/jira-keys
-        token: ${{secrets.GITHUB_TOKEN}} # stored in GitHub secret
-        ref: master
-        is-pull-request: ${{ github.event_name == 'pull_request' }}
-        parse-all-commits: ${{ github.event_name == 'push' }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+         repository: himanshuupadhyay102/custom-actions
+         token: ${{secrets.GITHUB_TOKEN}} # stored in GitHub secret
+         ref: main
+         path: .github/actions/jira-extract-issue-keys
+    - name: Run My Action
+      uses: ./.github/actions/jira-extract-issue-keys
+
     
       

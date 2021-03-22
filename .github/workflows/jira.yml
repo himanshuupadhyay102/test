@@ -35,7 +35,7 @@ jobs:
     - name: Checkout this Repo
       uses: actions/checkout@v2
     - name: Checkout private actions repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
       with:
 
          repository: himanshuupadhyay102/custom-actions

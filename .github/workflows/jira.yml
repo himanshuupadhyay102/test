@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ githubaction ]
+    branches: [ main ]
   workflow_dispatch:
 env:
   GITHUB_RUN_ID: ${{secrets.GITHUB_RUN_ID}}
@@ -36,15 +36,14 @@ jobs:
       uses: actions/checkout@v2
     - name: Checkout private actions repo
       uses: actions/checkout@v2
-
       with:
 
          repository: himanshuupadhyay102/custom-actions
          token: ${{secrets.GITHUB_TOKEN}} # stored in GitHub secret
          ref: main
-         path: .github/actions/jira-extract-issue-keys
+         path: .github/actions/jira-keys
     - name: Run My Action
-      uses: ./.github/actions/jira-extract-issue-keys
+      uses: ./.github/actions/jira-keys
 
     
       

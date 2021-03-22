@@ -42,9 +42,10 @@ jobs:
          token: ${{secrets.NEW_ACCESS_TOKEN}} # stored in GitHub secret
          ref: master
          path: .github/actions/jira-keys
+      
     - name: Run My Action
       #uses: ./.github/actions/jira-keys
-      uses: himanshuupadhyay102/custom-actions@master
+      uses: himanshuupadhyay102/custom-actions@main
       with:
 
          repository: himanshuupadhyay102/custom-actions

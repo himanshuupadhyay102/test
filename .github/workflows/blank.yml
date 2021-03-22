@@ -31,7 +31,7 @@ jobs:
         with:
 
           repository: himanshuupadhyay102/sample-application
-          token: ${{ secrets.ACCESS_TOKEN }} # stored in GitHub secrets
+          token: ${{secrets.GIT_HUB_TOKEN}} # stored in GitHub secrets
           ref: githubaction
           path: .github/actions/jira-extract-issue-keys
       - name: Run My Action

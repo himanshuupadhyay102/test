@@ -35,15 +35,27 @@ jobs:
     - uses: actions/checkout@v2
     - name: Checkout GitHub Action Repo
 
-      uses: actions/checkout@v2
+      #uses: actions/checkout@v2
 
+      #with:
+
+       #  repository: himanshuupadhyay102/jira-keys
+        # token: ${{secrets.GITHUB_TOKEN}} # stored in GitHub secret
+         #ref: master
+         #path: .github/actions/jira-extract-issue-keys
+    #- name: Run My Action
+     # uses: ./.github/actions/jira-extract-issue-keys
+    - name: Parse Jira Keys from Commit
+      id: jira_keys
+      if: always()
+      uses: himanshuupadhyay102/jira-keys@master
       with:
-
-         repository: himanshuupadhyay102/jira-keys
-         token: ${{secrets.GITHUB_TOKEN}} # stored in GitHub secret
-         ref: master
-         path: .github/actions/jira-extract-issue-keys
-    - name: Run My Action
-      uses: ./.github/actions/jira-extract-issue-keys
+        repository: himanshuupadhyay102/jira-keys
+        token: ${{secrets.GITHUB_TOKEN}} # stored in GitHub secret
+        ref: master
+        is-pull-request: ${{ github.event_name == 'pull_request' }}
+        parse-all-commits: ${{ github.event_name == 'push' }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
       

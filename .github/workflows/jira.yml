@@ -44,8 +44,7 @@ jobs:
          path: .github/actions/jira-keys
       
     - name: Run My Action
-      #uses: ./.github/actions/jira-keys
-      uses: himanshuupadhyay102/custom-actions@main
+      uses: ./.github/actions/jira-keys
       with:
 
          repository: himanshuupadhyay102/custom-actions

@@ -27,7 +27,7 @@ jobs:
       - name: Checkout GitHub Action Repo
         uses: actions/checkout@v2
         with:
-          repository: himanshuupadhyay102/sample-application
+          repository: himanshuupadhyay102/sample-application@githubaction
           token: ${{ secrets.GITHUB_TOKEN }} # stored in GitHub secrets
           ref: v0.1.2
           path: .github/actions/jira-extract-issue-keys

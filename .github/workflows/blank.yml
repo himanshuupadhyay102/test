@@ -26,7 +26,10 @@ jobs:
       # checkout the private repo containing the action to run
       - name: Checkout GitHub Action Repo
         uses: actions/checkout@v2
+
         with:
+          run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+
           repository: himanshuupadhyay102/sample-application
           token: himanshu # stored in GitHub secrets
           ref: githubaction

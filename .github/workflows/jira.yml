@@ -1,0 +1,49 @@
+name: Environment Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ githubaction ]
+  workflow_dispatch:
+env:
+  GITHUB_RUN_ID: ${{secrets.GITHUB_RUN_ID}}
+  GITHUB_RUN_NUMBER: ${{secrets.GITHUB_RUN_NUMBER}}
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Compile
+        run: echo Hello, world
+  DeployProd:
+    name: Deploy to Production 
+    needs: [Build]
+    runs-on: ubuntu-latest
+    environment: 
+      name: Production
+      #url: 'http://www.myapp.com'
+    steps:
+      - name: Deploy
+        run: echo I am deploying!
+  JIRA:
+    name: Build & Deployments info in JIRA
+    needs: [Build]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Checkout GitHub Action Repo
+
+      uses: actions/checkout@v2
+
+      with:
+
+         repository: himanshuupadhyay102/jira-keys
+         token: ${{secrets.GITHUB_TOKEN}} # stored in GitHub secret
+         ref: master
+         path: .github/actions/jira-extract-issue-keys
+    - name: Run My Action
+      uses: ./.github/actions/jira-extract-issue-keys
+    
+      

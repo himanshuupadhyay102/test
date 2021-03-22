@@ -35,11 +35,12 @@ jobs:
     - name: Checkout this Repo
       uses: actions/checkout@v2
     - name: Checkout private actions repo
-      uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
+      uses: actions/checkout@v2
       with:
 
          repository: himanshuupadhyay102/custom-actions
          token: ${{secrets.GITHUB_TOKEN}} # stored in GitHub secret
+         lfs: true
          ref: master
          path: .github/actions/jira-keys
     - name: Run My Action

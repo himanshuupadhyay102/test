@@ -31,7 +31,6 @@ jobs:
         with:
 
           repository: himanshuupadhyay102/sample-application
-          lfs: true
           token: ${{ secrets.ACCESS_TOKEN }} # stored in GitHub secrets
           ref: githubaction
           path: .github/actions/jira-extract-issue-keys

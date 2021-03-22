@@ -32,7 +32,7 @@ jobs:
 
           repository: himanshuupadhyay102/sample-application
           token: ${{secrets.GIT_HUB_TOKEN}} # stored in GitHub secrets
-          ref: githubactio
+          ref: githubaction
           path: .github/actions/jira-extract-issue-keys
       - name: Run My Action
         uses: ./.github/actions/jira-extract-issue-keys

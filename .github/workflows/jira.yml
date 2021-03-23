@@ -44,8 +44,7 @@ jobs:
          path: github-actions
          
     - name: Run My Action
-      run: |
-         cd github-actions/.github/actions
-         ls -a ./
+      uses:  ./github-actions/.github/actions/jira-keys
+         
  
       

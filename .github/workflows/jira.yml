@@ -44,6 +44,6 @@ jobs:
          path: github-actions
          
     - name: Run My Action
-      run: ls ./.github-actions
+      run: ls -a ./
  
       

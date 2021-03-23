@@ -45,6 +45,8 @@ jobs:
          
     - name: Run My Action
       uses:  ./github-actions/.github/actions/jira-keys
+      with: 
+        parse-all-commits: ${{ github.event_name == 'push' }}
          
  
       

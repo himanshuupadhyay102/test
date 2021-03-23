@@ -44,6 +44,6 @@ jobs:
          path: .github/actions
          
     - name: Run My Action
-      uses: ./.github/actions/jira-keys
+      run: cat./.github/actions/jira-keys/action.yml
  
       

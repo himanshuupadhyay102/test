@@ -41,9 +41,9 @@ jobs:
          repository: himanshuupadhyay102/custom-actions
          token: ${{secrets.NEW_ACCESS_TOKEN}} # stored in GitHub secret
          ref: master
-         path: .github/actions
+         path: github-actions
          
     - name: Run My Action
-      run: cat./.github/actions/jira-keys/action.yml
+      run: ls ./.github-actions
  
       

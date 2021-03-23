@@ -39,7 +39,7 @@ jobs:
       with:
 
          repository: himanshuupadhyay102/custom-actions
-         token: ${{secrets.NEW_ACCESS_TOKEN}} # stored in GitHub secret
+         token: ${{secrets.NEW_ACCESS_TOKEN}} #stored in GitHub secret
          ref: main
          path: github-actions
          

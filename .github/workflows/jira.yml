@@ -42,11 +42,22 @@ jobs:
          token: ${{secrets.NEW_ACCESS_TOKEN}} #stored in GitHub secret
          ref: main
          path: github-actions
-         
-    - name: Run My Action
-      uses:  ./github-actions/.github/actions/jira-keys
-      with: 
+    - name: Parse Jira Keys from Commit
+      id: jira_keys
+      uses: ./github-actions/.github/actions/jira-keys
+      with:
+        is-pull-request: ${{ github.event_name == 'pull_request' }}
         parse-all-commits: ${{ github.event_name == 'push' }}
-         
+    
+    - name: Push Build info to JIRA
+      if: steps.jira_keys.outputs.jira-keys != ''
+      id: push_build_info_to_jira
+      uses: ./github-actions/.github/actions/jira-upload-build-info
+      with:
+        cloud-instance-base-url:  'https://himanshuaccount.atlassian.net'
+        client-id: '${{ secrets.CLIENT_ID }}'
+        client-secret: '${{ secrets.CLIENT_SECRET }}'
+        issue-keys: "${{ steps.jira_keys.outputs.jira-keys }}"
+        build-state: successful     
  
       

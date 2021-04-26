@@ -2,9 +2,9 @@ name: Environment Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ nain ]
   pull_request:
-    branches: [ main ]
+    branches: [ nain ]
   workflow_dispatch:
 env:
   GITHUB_RUN_ID: ${{secrets.GITHUB_RUN_ID}}

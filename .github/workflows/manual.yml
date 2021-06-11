@@ -5,16 +5,16 @@ on:
       name:
         description: 'Person to greet'
         required: true
-        default: 'Mona the Octocat'
+        default: 'Himanshu Upadhyay'
       home:
         description: 'location'
         required: false
-        default: 'The Octoverse'
+        default: 'India'
 
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "Hello $!"
-        echo "- in $!"
+        echo "Hello $0!"
+        echo "- in $1!"

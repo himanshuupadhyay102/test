@@ -1,0 +1,14 @@
+name: Shell commands testing
+on:
+  repository_dispatch:
+    types: [echoing]
+jobs: 
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo a string
+        run: echo "Hello-himanshu"
+      - name: multi-line script
+        run: |
+                 echo "Hello-there"
+                 echo "hello-all"

@@ -1,9 +1,9 @@
 name: Manually triggered workflow
 on:
   push:
-    branches: [XYZ-release]
+    branches: [test]
   pull_request:
-    branches: [XYZ-release]
+    branches: [test]
   
 jobs:
   say_hello:

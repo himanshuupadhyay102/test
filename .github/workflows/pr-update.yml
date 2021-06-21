@@ -11,7 +11,7 @@ jobs:
         base-branch-regex: '[a-z\d-_.\\/]+'
         #head-branch-regex: 'test+'
         #title-template: '[%headbranch%] '
-        title-template: '[%${GITHUB_HEAD_REF}%]'
+        title-template: '[%$GITHUB_HEAD_REF%]'
         body-template: |
           Merging into '%basebranch%'
           [Link to %headbranch%](https://url/to/browse/ticket/%headbranch%)

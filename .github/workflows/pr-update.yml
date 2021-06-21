@@ -9,9 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: create-description
-      run: "some script for creating PR description from the branch diff"
-      id: description
+
     - name: pull-request
       uses: repo-sync/pull-request@v2
       with:

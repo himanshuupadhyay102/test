@@ -8,11 +8,13 @@ jobs:
   pull-request:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-
-    - name: pull-request
-      uses: repo-sync/pull-request@v2
+    - uses: deepakputhraya/action-pr-title@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        pr_title: '[${GITHUB_HEAD_REF}]'
+       regex: '([a-z])+\/([a-z])+' # Regex the title should match.
+       allowed_prefixes: '[${GITHUB_REF##*/}]' # title should start with the given prefix
+       disallowed_prefixes: 'feat/,hotfix' # title should not start with the given prefix
+       prefix_case_sensitive: false # title prefix are case insensitive
+       min_length: 5 # Min length of the title
+       max_length: 20 # Max length of the title
+       github_token: ${{ github.token }} # Default: ${{ github.token }}  
 

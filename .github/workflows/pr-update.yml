@@ -5,13 +5,13 @@ jobs:
   update_pr:
     runs-on: ubuntu-latest
     steps:
-    - uses: tzkhan/pr-update-action@v2
+    - uses: himanshuupadhyay102/pr-update-action@v2
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         base-branch-regex: '[a-z\d-_.\\/]+'
         #head-branch-regex: 'test+'
         #title-template: '[%headbranch%] '
-        title-template: '[${GITHUB_REF##*/}]'
+        #title-template: '[${GITHUB_REF##*/}]'
         body-template: |
           Merging into '%basebranch%'
           [Link to %headbranch%](https://url/to/browse/ticket/%headbranch%)

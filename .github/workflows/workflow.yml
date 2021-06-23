@@ -1,31 +1,14 @@
-name: Test Pipeline
-
+name: Shell commands testing
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
- 
-jobs:
-  Build:
+  repository_dispatch:
+    types: [echoing]
+jobs: 
+  run-shell-command:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Compile
-        run: echo Hello, world
-  
-  
-  Test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Hello
-        includes-script: script.py
-  
-  DeployProd:
-    name: Deploy to Production 
-    needs: [Build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy
-        run: echo I am deploying!
+      - name: echo a string
+        run: echo "Hello-himanshu"
+      - name: multi-line script
+        run: |
+                 echo "Hello-there"
+                 echo "hello-all"

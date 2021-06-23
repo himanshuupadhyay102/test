@@ -1,0 +1,14 @@
+name: Manually triggered workflow
+on:
+  push:
+    branches: [test]
+  pull_request:
+    branches: [test]
+  
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "Hello!"
+       
